@@ -1,0 +1,142 @@
+.about-project {
+  padding: 110px 70px 141px;
+}
+
+.about-project__container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  gap: 40px;
+  padding: 70px 0 110px;
+}
+
+.about-project__column {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  max-width: 493px;
+}
+
+.about-project__column:last-child {
+  margin-left: 58px;
+}
+
+.about-project__subtitle {
+  max-width: 550px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.about-project__text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+}
+
+.about-project__container-line {
+  display: flex;
+  flex-direction: row;
+  height: 36px;
+}
+
+.about-project__line {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-project__line-green {
+  width: 20%;
+  background: #3ddc84;
+}
+
+.about-project__line-grey {
+  width: 80%;
+  background: #303030;
+}
+
+.about-project__span {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+
+.about-project__span-develope {
+  position: absolute;
+  bottom: -30px;
+  color: #8B8B8B;
+}
+
+@media screen and (max-width: 890px) {
+  .about-project {
+    padding: 90px 50px 121px;
+  }
+
+  .about-project__container {
+    padding-bottom: 93px;
+    gap: 30px;
+  }
+
+  .about-project__column {
+    gap: 22px;
+  }
+
+  .about-project__column:last-child {
+    margin-left: 0;
+  }
+
+  .about-project__text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .about-project {
+    padding: 70px 18px 93px;
+  }
+
+  .about-project__container {
+    padding: 60px 0;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .about-project__column {
+    gap: 16px;
+  }
+
+  .about-project__text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-project__subtitle {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .about-project__span {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .about-project__span-develope {
+    bottom: -26px;
+  }
+
+  .about-project__line-green {
+    width: 35%;
+  }
+
+  .about-project__line-grey {
+    width: 65%;
+  }
+}

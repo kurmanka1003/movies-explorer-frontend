@@ -1,0 +1,14 @@
+.page {
+  min-width: 320px;
+  max-width: 1280px;
+  min-height: 100vh;
+  color: white;
+  background: #202020;
+  margin: 0 auto;
+  font-family: "Inter", sans-serif, Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+}

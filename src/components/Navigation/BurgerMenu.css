@@ -1,0 +1,29 @@
+.navigation__burger-button {
+  width: 44px;
+  height: 44px;
+  display: none;
+  position: relative;
+  border: none;
+  background-image: url(../../images/icon-burger-button.svg);
+  background-color: transparent;
+  z-index: 1;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 890px) {
+  .navigation__burger-button {
+    display: block;
+    z-index: 2;
+  }
+
+  .navigation.navigation_opened .navigation__burger-button {
+    position: fixed;
+    right: 30px;
+    top: 18px;
+  }
+
+  .navigation.navigation_opened .navigation__burger-button {
+    top: 15px;
+    right: 14px;
+  }
+}
