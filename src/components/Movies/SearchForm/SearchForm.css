@@ -1,5 +1,7 @@
 .search {
-  padding: 70px 70px 0;
+  margin: 70px 70px 0;
+  border-bottom: 1px solid #424242;
+  padding-bottom: 109px;
 }
 
 .search__form {
@@ -56,6 +58,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  max-height: 20px;
   width: 167px;
   height: 40px;
   gap: 12px;
@@ -112,13 +115,23 @@
 
 @media screen and (max-width: 890px) {
   .search {
-    padding: 98px 30px 0;
+    margin: 98px 30px 0;
+  }
+
+  .search__label {
+    margin: 26px 20px 26px 19px;
+    padding-left: 19px;
+  }
+
+  .search__submit-button {
+    right: 227px;
   }
 }
 
 @media screen and (max-width: 550px) {
   .search {
-    padding: 99px 14px 0;
+    margin: 99px 10px 0;
+    padding-bottom: 44px;
   }
 
   .search__text {
@@ -134,7 +147,7 @@
 
   .search__label {
     border: none;
-    margin: 45px auto 44px;
+    margin: 45px auto 0;
     padding-left: 0;
   }
 
