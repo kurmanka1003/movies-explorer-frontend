@@ -4,27 +4,60 @@
   display: none;
   position: relative;
   border: none;
-  background-image: url(../../images/icon-burger-button.svg);
   background-color: transparent;
   z-index: 1;
   cursor: pointer;
 }
 
+.navigation__burger-line {
+  transition: transform 0.8s, opacity 0.5s, background-color 0.5s;
+  width: 28px;
+  height: 3px;
+  position: absolute;
+  background-color: #ffffff;
+  left: 5px;
+}
+
+.navigation__burger-line:nth-child(3) {
+  transform: translateY(10px);
+}
+
+.navigation__burger-line:nth-child(1) {
+  transform: translateY(-10px);
+}
+
 @media screen and (max-width: 890px) {
   .navigation__burger-button {
-    display: block;
     z-index: 2;
+    display: block;
   }
 
   .navigation.navigation_opened .navigation__burger-button {
-    position: fixed;
     right: 30px;
     top: 18px;
+    position: fixed;
   }
 
+  .navigation.navigation_opened .navigation__burger-line:nth-child(3) {
+    transform: translateY(0) rotate(-45deg);
+  }
+
+  .navigation.navigation_opened .navigation__burger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navigation.navigation_opened .navigation__burger-line:nth-child(1) {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .navigation__burger-line {
+    width: 22px;
+  }
   .navigation.navigation_opened .navigation__burger-button {
-    top: 15px;
     right: 14px;
+    top: 15px;
   }
 }
 

@@ -14,7 +14,7 @@ function Navigation({ logined }) {
   }
 
   return (
-    <div
+    <header
       className={`navigation ${location === "/" ? "navigation_grey" : ""} ${
         isToggleBurgerButton ? "navigation_opened" : ""
       }`}
@@ -77,9 +77,13 @@ function Navigation({ logined }) {
         <button
           className="navigation__burger-button"
           onClick={handleToggleBurgerButton}
-        ></button>
+        >
+          <span className="navigation__burger-line"></span>
+          <span className="navigation__burger-line"></span>
+          <span className="navigation__burger-line"></span>
+        </button>
       )}
-    </div>
+    </header>
   );
 }
 
