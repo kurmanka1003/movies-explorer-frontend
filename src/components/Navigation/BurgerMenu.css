@@ -51,19 +51,18 @@
   }
 }
 
-@media screen and (max-width: 890px) {
-  .navigation__burger-line {
-    width: 22px;
-  }
-  .navigation.navigation_opened .navigation__burger-button {
-    right: 14px;
-    top: 15px;
-  }
-}
-
 @media screen and (max-width: 550px) {
   .navigation__burger-button {
     width: 40px;
     height: 43px;
+  }
+
+  .navigation__burger-line {
+    width: 23px;
+    height: 2px;
+  }
+  .navigation.navigation_opened .navigation__burger-button {
+    right: 14px;
+    top: 15px;
   }
 }
