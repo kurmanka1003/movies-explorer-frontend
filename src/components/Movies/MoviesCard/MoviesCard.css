@@ -78,3 +78,9 @@
 .movies__remove-button:hover {
   opacity: 0.7;
 }
+
+@media screen and (max-width: 550px) {
+  .movies__card {
+    max-height: 236px;
+  }
+}
