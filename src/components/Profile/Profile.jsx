@@ -32,7 +32,7 @@ function Profile() {
         </div>
         <div className="profile__buttons-container">
           <Link className="profile__button">Редактировать</Link>
-          <Link className="profile__button" style={{ color: "#EE3465" }}>
+          <Link className="profile__button" to="/" style={{ color: "#EE3465" }}>
             Выйти из аккаунта
           </Link>
         </div>
