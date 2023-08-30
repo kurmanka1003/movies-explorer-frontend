@@ -25,3 +25,5 @@ IP 158.160.67.146
 Frontend https://filmfinder.nomoredomainsicu.ru
 
 Backend https://api.filmfinder.nomoreparties.sbs
+
+Pull-request https://github.com/kurmanka1003/movies-explorer-frontend/pull/2
