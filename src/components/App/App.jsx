@@ -131,6 +131,7 @@ function App() {
     logout(jwt)
       .then(() => {
         localStorage.removeItem("jwt");
+        localStorage.removeItem("foundmovies");
         setLoggedIn(false);
         navigate("/", { replace: true });
       })

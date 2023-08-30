@@ -109,8 +109,16 @@ function SearchForm({
           (movie) => movie.duration <= DURATION_SHORT_MOVIE
         )
       );
-    } else if (location === "/saved-movies") {
-      return;
+    } else if (
+      location === "/saved-movies" &&
+      checkboxValue &&
+      inputValue === searchValidation.value
+    ) {
+      handleFoundMoviesData(
+        foundMoviesData.filter(
+          (movie) => movie.duration <= DURATION_SHORT_MOVIE
+        )
+      );
     } else {
       handleFoundMoviesData(shortFoundMovies);
     }
