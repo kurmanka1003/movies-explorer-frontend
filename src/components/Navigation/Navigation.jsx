@@ -6,8 +6,8 @@ import "./Navigation.css";
 import "./BurgerMenu.css";
 
 function Navigation({ logined }) {
-  const [isToggleBurgerButton, setToggleBurgerButton] = useState(false);
   const location = useLocation().pathname;
+  const [isToggleBurgerButton, setToggleBurgerButton] = useState(false);
 
   function handleToggleBurgerButton() {
     setToggleBurgerButton(!isToggleBurgerButton);
@@ -38,16 +38,20 @@ function Navigation({ logined }) {
               Главная
             </NavLink>
             <NavLink
-              className={(navdata) => `navigation__movie-link
-                    ${navdata.isActive ? "navigation__movie-link_active" : ""}`}
+              className={(navigdata) => `navigation__movie-link
+                    ${
+                      navigdata.isActive ? "navigation__movie-link_active" : ""
+                    }`}
               to="/movies"
               exact="true"
             >
               Фильмы
             </NavLink>
             <NavLink
-              className={(navdata) => `navigation__movie-link
-                    ${navdata.isActive ? "navigation__movie-link_active" : ""}`}
+              className={(navigdata) => `navigation__movie-link
+                    ${
+                      navigdata.isActive ? "navigation__movie-link_active" : ""
+                    }`}
               to="/saved-movies"
               exact="true"
             >

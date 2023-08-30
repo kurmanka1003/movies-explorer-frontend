@@ -30,14 +30,18 @@
 }
 
 .profile__input::-webkit-input-placeholder {
-  color: #ffffff;
+  color: #8b8b8b;
 }
 .profile__input::-moz-placeholder {
-  color: #ffffff;
+  color: #8b8b8b;
 }
 
 .profile__input-container:last-of-type {
   border: none;
+}
+
+.profile__input-container:focus-within {
+  border-bottom: 1px solid #4285f4;
 }
 
 .profile__span {
@@ -59,6 +63,18 @@
   outline: none;
   border-radius: 6px;
   transition: all 0.1s ease-in-out;
+}
+
+.profile__input:disabled {
+  text-align: right;
+  outline: none;
+  color: #8b8b8b;
+}
+
+.profile__button_disabled {
+  pointer-events: none;
+  color: #a0a0a0;
+  cursor: default;
 }
 
 .profile__buttons-container {

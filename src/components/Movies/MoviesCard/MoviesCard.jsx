@@ -1,41 +1,57 @@
 import { Link, useLocation } from "react-router-dom";
-import film1 from "../../../images/film1.svg";
+
 import "./MoviesCard.css";
 
-function MoviesCard() {
+function MoviesCard({
+  movie,
+  deleteMovie,
+  saveMovie,
+  savedMoviesData,
+  toggleDeleteFavorites,
+}) {
   const location = useLocation().pathname;
 
-  function handleClickLikeCard(event) {
-    const cardButton = event.target;
-    cardButton.classList.toggle('movies__favorites-button_active');
-  }
+  const isMovieOnFavorites = savedMoviesData?.some(
+    (item) => item.movieId === movie.id
+  );
 
-  function handleClickDeleteCard(event) {
-    const cardButton = event.target;
-    cardButton.closest('.movies__card').remove();
-  }
+  const durationHours = Math.floor(movie.duration / 60);
+  const durationMinutes = movie.duration % 60;
+
+  const linkImage =
+    location === "/saved-movies"
+      ? movie.image
+      : `https://api.nomoreparties.co/${movie.image.url}`;
+
+  const toggleFavoritesButton = () =>
+    isMovieOnFavorites ? toggleDeleteFavorites(movie.id) : saveMovie(movie);
 
   return (
     <div className="movies__card">
       <div className="movies__content">
-        <h3 className="movies__name">33 слова о дизайне</h3>
-        <span className="movies__duration">1ч 47м</span>
-        <Link className="movies__link" to="" target="_blank">
-        <img className="movies__image" src={film1} alt="Фильм" />
-      </Link>
+        <h3 className="movies__name">{movie.nameRU}</h3>
+        <span className="movies__duration">{`${durationHours}ч ${durationMinutes}м`}</span>
+        <Link className="movies__link" to={movie.trailerLink} target="_blank">
+          <img
+            className="movies__image"
+            src={linkImage}
+            alt={`Фильм - ${movie.nameRU}`}
+          />
+        </Link>
       </div>
-      {
-        location !== "/saved-movies" ?
-          <button
-            className="movies__favorites-button"
-            onClick={handleClickLikeCard}
-          />
-        :
-          <button
-            className="movies__favorites-button movies__remove-button"
-            onClick={handleClickDeleteCard}
-          />
-      }
+      {location !== "/saved-movies" ? (
+        <button
+          className={`movies__favorites-button ${
+            isMovieOnFavorites ? "movies__favorites-button_active" : ""
+          }`}
+          onClick={toggleFavoritesButton}
+        />
+      ) : (
+        <button
+          className="movies__favorites-button movies__remove-button"
+          onClick={() => deleteMovie(movie._id)}
+        />
+      )}
     </div>
   );
 }
