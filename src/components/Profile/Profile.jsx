@@ -8,8 +8,8 @@ import "./Profile.css";
 
 function Profile({ updateUser, onSignOut }) {
   const currentUser = useContext(CurrentUserContext);
-  const userName = currentUser.data.name;
-  const userEmail = currentUser.data.email;
+  const userName = currentUser.data ? currentUser.data.name : '';
+  const userEmail = currentUser.data ? currentUser.data.email : '';
 
   const [formValue, setFormValue] = useState({
     email: userEmail,
