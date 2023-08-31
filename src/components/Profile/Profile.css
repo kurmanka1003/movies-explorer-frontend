@@ -6,12 +6,24 @@
   padding: 74px 0 70px;
 }
 
+.profile__error {
+  min-height: 12px;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ee3465;
+}
+
 .profile__info {
   width: 410px;
   display: flex;
   flex-direction: column;
   margin-top: 123px;
   gap: 17px;
+}
+
+.profile__error:not(:last-child) {
+  gap: 0;
 }
 
 .profile__title {
@@ -71,11 +83,11 @@
   color: #8b8b8b;
 }
 
-.profile__button_disabled {
+/* .profile__button_disabled {
   pointer-events: none;
   color: #a0a0a0;
   cursor: default;
-}
+} */
 
 .profile__buttons-container {
   display: flex;
@@ -90,8 +102,17 @@
   font-size: 13px;
   line-height: 16px;
   text-decoration: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
   color: #ffffff;
   transition: 0.5s;
+}
+
+.profile__button:disabled {
+  pointer-events: none;
+  color: #a0a0a0;
+  cursor: default;
 }
 
 .profile__button:hover {
