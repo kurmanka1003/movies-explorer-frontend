@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import useInput from "../../../hooks/useInput";
+import useInput from "../../hooks/useInput";
 
-import { DURATION_SHORT_MOVIE } from "../../../utils/config";
+import { DURATION_SHORT_MOVIE } from "../../utils/config";
 
 import "./SearchForm.css";
 

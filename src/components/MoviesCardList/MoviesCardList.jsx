@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import MoviesCard from "../MoviesCard/MoviesCard";
+import MoviesCard from "./MoviesCard/MoviesCard";
 
 import {
   SCREEN_SIZE_DESKTOP,
   SCREEN_SIZE_TABLET,
   SCREEN_MOVIE_COUNT,
   ADDITIONAL_MOVIES,
-} from "../../../utils/config";
+} from "../../utils/config";
 
 import "./MoviesCardList.css";
 

@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 import Navigation from "../Navigation/Navigation";
-import SearchForm from "../Movies/SearchForm/SearchForm";
-import MoviesCardList from "../Movies/MoviesCardList/MoviesCardList";
+import SearchForm from "../SearchForm/SearchForm";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 
 import "./SavedMovies.css";
