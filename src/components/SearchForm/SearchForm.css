@@ -71,6 +71,11 @@
   opacity: 0.7;
 }
 
+.search__submit-button:disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
 .search__label {
   display: flex;
   align-items: center;

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 
 import { getMovies } from "../../utils/MoviesApi";
 import { getContent, register, authorize, logout } from "../../utils/AuthApi";
@@ -37,6 +37,8 @@ function App() {
   const [isOpenInfoTooltip, setIsOpenInfoTooltip] = useState(false);
   const [infoTooltip, setInfoTooltip] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
+
+  const location = useLocation().pathname;
 
   useEffect(() => {
     if (loggedIn) {
@@ -147,7 +149,9 @@ function App() {
 
   const handleCheckFoundMovies = () => {
     setPreloader(true);
-    const foundMovieData = localStorage.getItem("foundmovies");
+    const localStorageKey =
+      location === "/movies" ? "foundmovies" : "savedmovies";
+    const foundMovieData = localStorage.getItem(localStorageKey);
     if (!foundMovieData) {
       return setPreloader(false);
     } else {

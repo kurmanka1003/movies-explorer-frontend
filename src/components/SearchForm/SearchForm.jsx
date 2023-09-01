@@ -68,7 +68,7 @@ function SearchForm({
     const searchResult = filterMovies(
       movies,
       searchValidation.value,
-      searchCheckboxRef.current.checked
+      checkboxValue
     );
     if (!searchResult) {
       return setSearchResult(false);
@@ -81,8 +81,10 @@ function SearchForm({
       setSearchSavedMovies(true);
       return;
     }
+    const localStorageKey = location === "/movies" ? "foundmovies" : "savedmovies";
+
     localStorage.setItem(
-      "foundmovies",
+      localStorageKey,
       JSON.stringify({
         inputValue: searchValidation.value,
         checkboxValue: searchCheckboxRef.current.checked,
@@ -95,7 +97,15 @@ function SearchForm({
   };
 
   const toggleCheckbox = () => {
-    handleSearchCheckboxValue(!checkboxValue);
+    const newCheckboxValue = !checkboxValue;
+    handleSearchCheckboxValue(newCheckboxValue);  
+
+    const filteredMovies = filterMovies(
+      movies,
+      searchValidation.value,
+      newCheckboxValue
+    );
+    handleFoundMoviesData(filteredMovies);
   };
 
   useEffect(() => {
