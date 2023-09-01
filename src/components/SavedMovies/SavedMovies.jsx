@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import Navigation from "../Navigation/Navigation";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
@@ -16,29 +15,46 @@ function SavedMovies({
   setSearchResult,
   handleFoundMoviesData,
   handleDeleteMovie,
+  searchInputValue,
+  searchCheckboxValue,
+  handleSearchCheckboxValue,
+  handleSearchInputValue,
+  nothingFound,
+  setNothingFound
 }) {
-  const [favoriteInput, setFavoriteInput] = useState("");
-  const [favoriteCheckbox, setFavoriteCheckbox] = useState(false);
 
+const [renderFilms, setRenderFilms] = useState([]);
+  useEffect(() => {
+    if (searchCheckboxValue) {
+      setRenderFilms(moviesData.filter((item) => item.duration <= 40))
+    } else{
+      setRenderFilms(moviesData);
+    } 
+  }, [searchCheckboxValue]) 
+
+  
   return (
     <div className="movies">
       <Navigation logined />
       <SearchForm
         movies={moviesData}
-        inputValue={favoriteInput}
-        checkboxValue={favoriteCheckbox}
+        inputValue={searchInputValue}
+        checkboxValue={searchCheckboxValue}
         setSearchResult={setSearchResult}
         setSearchSavedMovies={setSearchSavedMovies}
         handleFoundMoviesData={handleFoundMoviesData}
-        handleSearchInputValue={setFavoriteInput}
-        handleSearchCheckboxValue={setFavoriteCheckbox}
+        handleSearchInputValue={handleSearchInputValue}
+        handleSearchCheckboxValue={handleSearchCheckboxValue}
+        nothingFound = {nothingFound}
+        setNothingFound = {setNothingFound}
       />
       <MoviesCardList
-        movies={moviesData}
+        movies={renderFilms}
         filteredMoviesFavorites={filteredMoviesFavorites}
         searchResult={searchResult}
         searchSavedMovies={searchSavedMovies}
         deleteMovie={handleDeleteMovie}
+        nothingFound = {nothingFound}
       />
       <Footer />
     </div>

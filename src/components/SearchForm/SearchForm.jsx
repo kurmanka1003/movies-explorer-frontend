@@ -18,12 +18,14 @@ function SearchForm({
   handleCheckFoundMovies,
   setSearchResult,
   setSearchSavedMovies,
+  handleSearchInputValue,
+  nothingFound,
+  setNothingFound,
 }) {
   const location = useLocation().pathname;
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const searchCheckboxRef = useRef(null);
   const searchValidation = useInput(inputValue, { isEmpty: true });
-
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -52,7 +54,6 @@ function SearchForm({
 
   const filterMovies = (moviesData, searchValue, shortMovie) => {
     const searchNameMovie = searchValue.toLowerCase();
-
     return moviesData.filter((movie) => {
       let movieName = movie.nameRU.toLowerCase();
       if (shortMovie) {
@@ -68,20 +69,23 @@ function SearchForm({
     const searchResult = filterMovies(
       movies,
       searchValidation.value,
-      checkboxValue
+      searchCheckboxRef.current.checked
     );
-    if (!searchResult) {
-      return setSearchResult(false);
+    console.log(searchResult);
+    if (searchResult.length === 0) {
+      setSearchResult(false);
+      setNothingFound(false);
     } else {
       setSearchResult(true);
+      setNothingFound(true);
     }
     handleFoundMoviesData(searchResult);
-
     if (location === "/saved-movies") {
       setSearchSavedMovies(true);
       return;
     }
-    const localStorageKey = location === "/movies" ? "foundmovies" : "savedmovies";
+    const localStorageKey =
+      location === "/movies" ? "foundmovies" : "savedmovies";
 
     localStorage.setItem(
       localStorageKey,
@@ -98,8 +102,7 @@ function SearchForm({
 
   const toggleCheckbox = () => {
     const newCheckboxValue = !checkboxValue;
-    handleSearchCheckboxValue(newCheckboxValue);  
-
+    handleSearchCheckboxValue(!checkboxValue);
     const filteredMovies = filterMovies(
       movies,
       searchValidation.value,
@@ -107,24 +110,6 @@ function SearchForm({
     );
     handleFoundMoviesData(filteredMovies);
   };
-
-  useEffect(() => {
-    if (
-      location === "/movies" &&
-      checkboxValue &&
-      inputValue === searchValidation.value
-    ) {
-      handleFoundMoviesData(
-        foundMoviesData.filter(
-          (movie) => movie.duration <= DURATION_SHORT_MOVIE
-        )
-      );
-    } else if (location === "/saved-movies") {
-      return;
-    } else {
-      handleFoundMoviesData(shortFoundMovies);
-    }
-  }, [checkboxValue, searchValidation.value]);
 
   return (
     <div className="search">

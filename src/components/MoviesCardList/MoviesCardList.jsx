@@ -20,6 +20,7 @@ function MoviesCardList({
   filteredMoviesFavorites,
   saveMovie,
   deleteMovie,
+  nothingFound,
 }) {
   const [amountOfMoviesOnPage, setAmountMoviesOnPage] = useState(null);
   const [amountMoviesAddedOnPage, setAmountMoviesAddedOnPage] = useState(null);
@@ -57,11 +58,11 @@ function MoviesCardList({
   const handleAddMoreMovies = () => {
     setAmountMoviesOnPage(amountOfMoviesOnPage + amountMoviesAddedOnPage);
   };
-
+console.log(nothingFound);
   return (
     <section className="movies__card-list" aria-label="Секция с фильмами">
       <div className="movies__container">
-        {searchResult && !movies.length ? (
+        {!nothingFound ? (
           <h2 style={{ textAlign: "center", color: "#FFFFFF" }}>
             Ничего не найдено
           </h2>

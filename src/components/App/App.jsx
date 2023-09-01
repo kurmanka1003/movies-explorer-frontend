@@ -33,10 +33,14 @@ function App() {
   const [preloader, setPreloader] = useState(true);
   const [searchInputValue, setSearchInputValue] = useState("");
   const [searchResult, setSearchResult] = useState(false);
+  const [searchResultSavedMovies, setSearchResultSavedMovies] = useState(false);
   const [authError, setAuthError] = useState(false);
   const [isOpenInfoTooltip, setIsOpenInfoTooltip] = useState(false);
   const [infoTooltip, setInfoTooltip] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
+  const [favoriteInput, setFavoriteInput] = useState("");
+  const [favoriteCheckbox, setFavoriteCheckbox] = useState(false);
+  const [nothingFound, setNothingFound] = useState(false); 
 
   const location = useLocation().pathname;
 
@@ -271,6 +275,8 @@ function App() {
                 handleSearchCheckboxValue={setCheckbox}
                 handleDeleteMovie={handleDeleteMovieOnFavorites}
                 handleShortFoundMovies={setShortFoundMovies}
+                nothingFound = {nothingFound}
+                setNothingFound = {setNothingFound}
               />
             </ProtectedRoute>
           }
@@ -286,8 +292,14 @@ function App() {
                 filteredMoviesFavorites={filteredMoviesFavorites}
                 searchSavedMovies={searchSavedMovies}
                 setSearchSavedMovies={setSearchSavedMovies}
-                searchResult={searchResult}
-                setSearchResult={setSearchResult}
+                searchResult={searchResultSavedMovies}
+                setSearchResult={setSearchResultSavedMovies}
+                searchCheckboxValue={favoriteCheckbox}
+                handleSearchCheckboxValue={setFavoriteCheckbox}
+                searchInputValue={favoriteInput}
+                handleSearchInputValue={setFavoriteInput}
+                nothingFound = {nothingFound}
+                setNothingFound = {setNothingFound}
               />
             </ProtectedRoute>
           }
