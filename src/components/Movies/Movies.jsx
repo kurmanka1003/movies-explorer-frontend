@@ -21,7 +21,7 @@ function Movies({
   handleCheckFoundMovies,
   handleDeleteMovie,
   nothingFound,
-  setNothingFound
+  setNothingFound,
 }) {
   return (
     <div className="movies">
@@ -38,8 +38,8 @@ function Movies({
         handleSearchInputValue={handleSearchInputValue}
         handleSearchCheckboxValue={handleSearchCheckboxValue}
         handleShortFoundMovies={handleShortFoundMovies}
-        nothingFound = {nothingFound}
-        setNothingFound = {setNothingFound}
+        nothingFound={nothingFound}
+        setNothingFound={setNothingFound}
       />
       <MoviesCardList
         movies={foundMoviesData}
@@ -50,7 +50,7 @@ function Movies({
         saveMovie={saveMovie}
         deleteMovie={handleDeleteMovie}
         handleFoundMoviesData={handleFoundMoviesData}
-        nothingFound = {nothingFound}
+        nothingFound={nothingFound}
       />
       <Footer />
     </div>

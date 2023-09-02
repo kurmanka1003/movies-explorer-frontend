@@ -71,24 +71,21 @@ function SearchForm({
       searchValidation.value,
       searchCheckboxRef.current.checked
     );
-    console.log(searchResult);
     if (searchResult.length === 0) {
-      setSearchResult(false);
-      setNothingFound(false);
-    } else {
       setSearchResult(true);
       setNothingFound(true);
+    } else {
+      setSearchResult(false);
+      setNothingFound(false);
     }
     handleFoundMoviesData(searchResult);
     if (location === "/saved-movies") {
       setSearchSavedMovies(true);
       return;
     }
-    const localStorageKey =
-      location === "/movies" ? "foundmovies" : "savedmovies";
 
     localStorage.setItem(
-      localStorageKey,
+      "foundmovies",
       JSON.stringify({
         inputValue: searchValidation.value,
         checkboxValue: searchCheckboxRef.current.checked,
@@ -110,7 +107,7 @@ function SearchForm({
     );
     handleFoundMoviesData(filteredMovies);
   };
-
+  
   return (
     <div className="search">
       {windowWidth > 550 ? (

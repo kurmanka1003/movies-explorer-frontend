@@ -23,7 +23,9 @@ function SavedMovies({
   setNothingFound
 }) {
 
+
 const [renderFilms, setRenderFilms] = useState([]);
+const [shouldFilter, setShouldFilter] = useState(false);
   useEffect(() => {
     if (searchCheckboxValue) {
       setRenderFilms(moviesData.filter((item) => item.duration <= 40))
@@ -32,7 +34,15 @@ const [renderFilms, setRenderFilms] = useState([]);
     } 
   }, [searchCheckboxValue]) 
 
-  
+
+useEffect(() => {
+  if (shouldFilter) {
+    setRenderFilms(moviesData.filter((item) => item.duration <= 40));
+  } else {
+    setRenderFilms(moviesData);
+  }
+}, [shouldFilter, moviesData]);
+
   return (
     <div className="movies">
       <Navigation logined />

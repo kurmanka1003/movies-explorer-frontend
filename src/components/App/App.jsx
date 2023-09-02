@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 import { getMovies } from "../../utils/MoviesApi";
 import { getContent, register, authorize, logout } from "../../utils/AuthApi";
@@ -40,9 +40,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [favoriteInput, setFavoriteInput] = useState("");
   const [favoriteCheckbox, setFavoriteCheckbox] = useState(false);
-  const [nothingFound, setNothingFound] = useState(false); 
-
-  const location = useLocation().pathname;
+  const [nothingFound, setNothingFound] = useState(false);
 
   useEffect(() => {
     if (loggedIn) {
@@ -153,9 +151,7 @@ function App() {
 
   const handleCheckFoundMovies = () => {
     setPreloader(true);
-    const localStorageKey =
-      location === "/movies" ? "foundmovies" : "savedmovies";
-    const foundMovieData = localStorage.getItem(localStorageKey);
+    const foundMovieData = localStorage.getItem("foundmovies");
     if (!foundMovieData) {
       return setPreloader(false);
     } else {
@@ -208,7 +204,7 @@ function App() {
         });
       })
       .catch((err) => console.log(err));
-  };
+  };  
 
   useEffect(() => {
     if (loggedIn) return setFilteredFavoriteMovies(savedMoviesData);
@@ -275,8 +271,8 @@ function App() {
                 handleSearchCheckboxValue={setCheckbox}
                 handleDeleteMovie={handleDeleteMovieOnFavorites}
                 handleShortFoundMovies={setShortFoundMovies}
-                nothingFound = {nothingFound}
-                setNothingFound = {setNothingFound}
+                nothingFound={nothingFound}
+                setNothingFound={setNothingFound}
               />
             </ProtectedRoute>
           }
@@ -298,8 +294,8 @@ function App() {
                 handleSearchCheckboxValue={setFavoriteCheckbox}
                 searchInputValue={favoriteInput}
                 handleSearchInputValue={setFavoriteInput}
-                nothingFound = {nothingFound}
-                setNothingFound = {setNothingFound}
+                nothingFound={nothingFound}
+                setNothingFound={setNothingFound}
               />
             </ProtectedRoute>
           }

@@ -58,11 +58,11 @@ function MoviesCardList({
   const handleAddMoreMovies = () => {
     setAmountMoviesOnPage(amountOfMoviesOnPage + amountMoviesAddedOnPage);
   };
-console.log(nothingFound);
+
   return (
     <section className="movies__card-list" aria-label="Секция с фильмами">
       <div className="movies__container">
-        {!nothingFound ? (
+        {nothingFound ? (
           <h2 style={{ textAlign: "center", color: "#FFFFFF" }}>
             Ничего не найдено
           </h2>
