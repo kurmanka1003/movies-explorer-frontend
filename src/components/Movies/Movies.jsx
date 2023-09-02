@@ -25,6 +25,8 @@ function Movies({
       <Navigation logined />
       <SearchForm
         movies={moviesData}
+        foundMoviesData={foundMoviesData}
+        shortFoundMovies={shortFoundMovies}
         inputValue={searchInputValue}
         checkboxValue={searchCheckboxValue}
         handleCheckFoundMovies={handleCheckFoundMovies}

@@ -8,6 +8,8 @@ import "./SearchForm.css";
 
 function SearchForm({
   movies,
+  foundMoviesData,
+  shortFoundMovies,
   inputValue,
   checkboxValue,
   handleSearchCheckboxValue,
@@ -100,6 +102,16 @@ function SearchForm({
     );
     handleFoundMoviesData(filteredMovies);
   };
+
+  useEffect(() => {
+    if (location === '/movies' && checkboxValue && inputValue === searchValidation.value) {
+      handleFoundMoviesData(foundMoviesData.filter((movie) => movie.duration <= DURATION_SHORT_MOVIE));
+    } else if (location === '/saved-movies') {
+      return;
+    } else {
+      handleFoundMoviesData(shortFoundMovies);
+    }
+  }, [checkboxValue, searchValidation.value]);
 
   return (
     <div className="search">
