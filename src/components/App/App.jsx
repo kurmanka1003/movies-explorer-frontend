@@ -40,6 +40,7 @@ function App() {
   const [favoriteInput, setFavoriteInput] = useState("");
   const [favoriteCheckbox, setFavoriteCheckbox] = useState(false);
   const [nothingFound, setNothingFound] = useState(false);
+  const [nothingFoundSaved, setNothingFoundSaved] = useState(false);
 
   useEffect(() => {
     if (loggedIn) {
@@ -290,8 +291,8 @@ function App() {
                 handleSearchCheckboxValue={setFavoriteCheckbox}
                 searchInputValue={favoriteInput}
                 handleSearchInputValue={setFavoriteInput}
-                nothingFound={nothingFound}
-                setNothingFound={setNothingFound}
+                nothingFound={nothingFoundSaved}
+                setNothingFound={setNothingFoundSaved}
               />
             </ProtectedRoute>
           }

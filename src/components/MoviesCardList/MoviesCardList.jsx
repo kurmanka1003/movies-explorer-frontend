@@ -58,13 +58,27 @@ function MoviesCardList({
     setAmountMoviesOnPage(amountOfMoviesOnPage + amountMoviesAddedOnPage);
   };
 
+  const getSearchResult = () => {
+    if (location === "/movies") {
+      return "Ничего не найдено";
+    }
+
+    if (location === "/saved-movies" && movies.length === 0) {
+      return "Пока нет сохранённых фильмов";
+    }
+
+    if (location === "/saved-movies") {
+      return "Ничего не найдено";
+    }
+
+    return;
+  };
+
   return (
     <section className="movies__card-list" aria-label="Секция с фильмами">
       <div className="movies__container">
         {nothingFound ? (
-          <h2 style={{ textAlign: "center", color: "#FFFFFF" }}>
-            Ничего не найдено
-          </h2>
+          <p className="movies__error-text">{getSearchResult()}</p>
         ) : (
           ""
         )}
