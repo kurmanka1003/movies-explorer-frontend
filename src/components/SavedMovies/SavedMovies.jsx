@@ -11,8 +11,6 @@ function SavedMovies({
   filteredMoviesFavorites,
   searchSavedMovies,
   setSearchSavedMovies,
-  searchResult,
-  setSearchResult,
   handleFoundMoviesData,
   handleDeleteMovie,
   searchInputValue,
@@ -20,28 +18,26 @@ function SavedMovies({
   handleSearchCheckboxValue,
   handleSearchInputValue,
   nothingFound,
-  setNothingFound
+  setNothingFound,
 }) {
+  const [renderFilms, setRenderFilms] = useState([]);
+  const [shouldFilter, setShouldFilter] = useState(false);
 
-
-const [renderFilms, setRenderFilms] = useState([]);
-const [shouldFilter, setShouldFilter] = useState(false);
   useEffect(() => {
     if (searchCheckboxValue) {
-      setRenderFilms(moviesData.filter((item) => item.duration <= 40))
-    } else{
+      setRenderFilms(moviesData.filter((item) => item.duration <= 40));
+    } else {
       setRenderFilms(moviesData);
-    } 
-  }, [searchCheckboxValue]) 
+    }
+  }, [searchCheckboxValue]);
 
-
-useEffect(() => {
-  if (shouldFilter) {
-    setRenderFilms(moviesData.filter((item) => item.duration <= 40));
-  } else {
-    setRenderFilms(moviesData);
-  }
-}, [shouldFilter, moviesData]);
+  useEffect(() => {
+    if (shouldFilter) {
+      setRenderFilms(moviesData.filter((item) => item.duration <= 40));
+    } else {
+      setRenderFilms(moviesData);
+    }
+  }, [shouldFilter, moviesData]);
 
   return (
     <div className="movies">
@@ -50,21 +46,18 @@ useEffect(() => {
         movies={moviesData}
         inputValue={searchInputValue}
         checkboxValue={searchCheckboxValue}
-        setSearchResult={setSearchResult}
         setSearchSavedMovies={setSearchSavedMovies}
         handleFoundMoviesData={handleFoundMoviesData}
         handleSearchInputValue={handleSearchInputValue}
         handleSearchCheckboxValue={handleSearchCheckboxValue}
-        nothingFound = {nothingFound}
-        setNothingFound = {setNothingFound}
+        setNothingFound={setNothingFound}
       />
       <MoviesCardList
         movies={renderFilms}
         filteredMoviesFavorites={filteredMoviesFavorites}
-        searchResult={searchResult}
         searchSavedMovies={searchSavedMovies}
         deleteMovie={handleDeleteMovie}
-        nothingFound = {nothingFound}
+        nothingFound={nothingFound}
       />
       <Footer />
     </div>

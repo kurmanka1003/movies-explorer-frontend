@@ -9,17 +9,12 @@ import "./SearchForm.css";
 function SearchForm({
   movies,
   inputValue,
-  foundMoviesData,
-  shortFoundMovies,
   checkboxValue,
   handleSearchCheckboxValue,
   handleShortFoundMovies,
   handleFoundMoviesData,
   handleCheckFoundMovies,
-  setSearchResult,
   setSearchSavedMovies,
-  handleSearchInputValue,
-  nothingFound,
   setNothingFound,
 }) {
   const location = useLocation().pathname;
@@ -72,10 +67,8 @@ function SearchForm({
       searchCheckboxRef.current.checked
     );
     if (searchResult.length === 0) {
-      setSearchResult(true);
       setNothingFound(true);
     } else {
-      setSearchResult(false);
       setNothingFound(false);
     }
     handleFoundMoviesData(searchResult);
@@ -107,7 +100,7 @@ function SearchForm({
     );
     handleFoundMoviesData(filteredMovies);
   };
-  
+
   return (
     <div className="search">
       {windowWidth > 550 ? (

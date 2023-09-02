@@ -10,12 +10,9 @@ function Movies({
   foundMoviesData,
   shortFoundMovies,
   saveMovie,
-  searchResult,
-  setSearchResult,
   searchInputValue,
   searchCheckboxValue,
   handleFoundMoviesData,
-  handleSearchInputValue,
   handleSearchCheckboxValue,
   handleShortFoundMovies,
   handleCheckFoundMovies,
@@ -28,24 +25,18 @@ function Movies({
       <Navigation logined />
       <SearchForm
         movies={moviesData}
-        foundMoviesData={foundMoviesData}
-        shortFoundMovies={shortFoundMovies}
         inputValue={searchInputValue}
         checkboxValue={searchCheckboxValue}
-        setSearchResult={setSearchResult}
         handleCheckFoundMovies={handleCheckFoundMovies}
         handleFoundMoviesData={handleFoundMoviesData}
-        handleSearchInputValue={handleSearchInputValue}
         handleSearchCheckboxValue={handleSearchCheckboxValue}
         handleShortFoundMovies={handleShortFoundMovies}
-        nothingFound={nothingFound}
         setNothingFound={setNothingFound}
       />
       <MoviesCardList
         movies={foundMoviesData}
         savedMovies={savedMoviesData}
         shortFoundMovies={shortFoundMovies}
-        searchResult={searchResult}
         checkboxValue={searchCheckboxValue}
         saveMovie={saveMovie}
         deleteMovie={handleDeleteMovie}

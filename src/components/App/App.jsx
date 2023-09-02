@@ -32,7 +32,6 @@ function App() {
   const [сheckbox, setCheckbox] = useState(false);
   const [preloader, setPreloader] = useState(true);
   const [searchInputValue, setSearchInputValue] = useState("");
-  const [searchResult, setSearchResult] = useState(false);
   const [searchResultSavedMovies, setSearchResultSavedMovies] = useState(false);
   const [authError, setAuthError] = useState(false);
   const [isOpenInfoTooltip, setIsOpenInfoTooltip] = useState(false);
@@ -204,7 +203,7 @@ function App() {
         });
       })
       .catch((err) => console.log(err));
-  };  
+  };
 
   useEffect(() => {
     if (loggedIn) return setFilteredFavoriteMovies(savedMoviesData);
@@ -263,11 +262,8 @@ function App() {
                 searchCheckboxValue={сheckbox}
                 searchInputValue={searchInputValue}
                 saveMovie={handleAddMovieOnFavorites}
-                searchResult={searchResult}
-                setSearchResult={setSearchResult}
                 handleCheckFoundMovies={handleCheckFoundMovies}
                 handleFoundMoviesData={setFoundMovies}
-                handleSearchInputValue={setSearchInputValue}
                 handleSearchCheckboxValue={setCheckbox}
                 handleDeleteMovie={handleDeleteMovieOnFavorites}
                 handleShortFoundMovies={setShortFoundMovies}

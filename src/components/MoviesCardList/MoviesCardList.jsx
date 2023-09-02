@@ -16,7 +16,6 @@ function MoviesCardList({
   movies,
   savedMovies,
   searchSavedMovies,
-  searchResult,
   filteredMoviesFavorites,
   saveMovie,
   deleteMovie,
