@@ -12,6 +12,11 @@
   row-gap: 30px;
 }
 
+.movies__error-text {
+  text-align: center;
+  color: #ffffff;
+}
+
 .movies__button-container {
   margin-top: 80px;
   display: flex;

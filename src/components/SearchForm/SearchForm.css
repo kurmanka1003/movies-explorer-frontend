@@ -9,7 +9,7 @@
   position: relative;
   justify-content: space-between;
   align-items: center;
-  background-color: #2F2F2F;
+  background-color: #2f2f2f;
   border-radius: 9px;
   height: 72px;
 }
@@ -25,8 +25,8 @@
   line-height: 18px;
   padding: 0 22px 0 63px;
   border: none;
-  background-color: #2F2F2F;
-  background-image: url(../../../images/icon-search.svg);
+  background-color: #2f2f2f;
+  background-image: url(../../images/icon-search.svg);
   background-repeat: no-repeat;
   background-size: 34px 34px;
   background-position: 19px;
@@ -35,8 +35,22 @@
   outline: none;
 }
 
-.search__input::-webkit-input-placeholder { color: #8B8B8B; }
-.search__input::-moz-placeholder { color: #8B8B8B; }
+.search__error {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 12px;
+  color: #ee3465;
+  position: absolute;
+  top: 85px;
+  left: 5px;
+}
+
+.search__input::-webkit-input-placeholder {
+  color: #8b8b8b;
+}
+.search__input::-moz-placeholder {
+  color: #8b8b8b;
+}
 
 .search__submit-button {
   width: 80px;
@@ -45,7 +59,7 @@
   position: absolute;
   top: 50%;
   right: 257px;
-  background-image: url(../../../images/icon-find.svg);
+  background-image: url(../../images/icon-find.svg);
   background-repeat: no-repeat;
   background-color: unset;
   border: none;
@@ -57,6 +71,10 @@
   opacity: 0.7;
 }
 
+.search__submit-button:disabled {
+  cursor: default;
+  pointer-events: none;
+}
 
 .search__label {
   display: flex;
@@ -84,8 +102,8 @@
   -moz-appearance: none;
   appearance: none;
   box-shadow: 0px 4px 4px rgba(50, 50, 71, 0.08),
-  0px 4px 8px rgba(50, 50, 71, 0.06);
-  transition: transform .3s ease-out;
+    0px 4px 8px rgba(50, 50, 71, 0.06);
+  transition: transform 0.3s ease-out;
 }
 
 .search__checkbox::after {
@@ -98,16 +116,16 @@
   left: 2px;
   border-radius: 50%;
   background: #e8e8e8;
-  transition: transform .3s ease-out;
+  transition: transform 0.3s ease-out;
 }
 
 .search__checkbox:checked {
-  background: #2BE080;
+  background: #2be080;
 }
 
 .search__checkbox:checked::after {
   transform: translateX(100%);
-  background: #ffffff; 
+  background: #ffffff;
 }
 
 .search__text {
@@ -142,7 +160,7 @@
   .search__text {
     font-size: 11px;
   }
-  
+
   .search__input {
     font-size: 14px;
     line-height: 20px;
