@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import CurrentUserContext from "../../context/CurrentUserContext";
@@ -11,6 +11,9 @@ function Profile({ updateUser, onSignOut }) {
   const currentUser = useContext(CurrentUserContext);
   const userName = currentUser.data ? currentUser.data.name : "";
   const userEmail = currentUser.data ? currentUser.data.email : "";
+  const [editAcess, setEditAcess] = useState(true);
+  const [disableButton, setDisableButton] = useState(false);
+  const [isDataChanged, setIsDataChanged] = useState(false);
 
   const nameValidation = useInput(userName, {
     isEmpty: true,
@@ -36,15 +39,37 @@ function Profile({ updateUser, onSignOut }) {
     );
   };
 
-  const handleDisableButton = () =>
-    (!nameValidation.inputValid || nameValidation.value === userName) &&
-    (!emailValidation.inputValid || emailValidation.value === userEmail);
+  useEffect(() => {
+    const isNameValid = !nameValidation.hasChanged || nameValidation.inputValid;
+    const isEmailValid =
+      !emailValidation.hasChanged || emailValidation.inputValid;
+
+    setIsDataChanged(
+      nameValidation.value !== userName || emailValidation.value !== userEmail
+    );
+
+    setDisableButton(!isNameValid || !isEmailValid || !isDataChanged);
+  }, [nameValidation, emailValidation, userName, userEmail]);
+
+  const handleDisableButton = () => {
+    return (
+      (!nameValidation.inputValid || nameValidation.value === userName) &&
+      (!emailValidation.inputValid || emailValidation.value === userEmail) &&
+      (nameValidation.value !== userName ||
+        emailValidation.value !== userEmail) &&
+      isDataChanged
+    );
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const name = nameValidation.value;
     const email = emailValidation.value;
     updateUser({ name, email });
+  };
+
+  const toggleEditAcess = () => {
+    setEditAcess(!editAcess);
   };
 
   return (
@@ -64,6 +89,7 @@ function Profile({ updateUser, onSignOut }) {
                 onBlur={nameValidation.onBlur}
                 onChange={nameValidation.onChange}
                 value={nameValidation.value}
+                disabled={editAcess}
               />
             </div>
             <div className="profile__input-container">
@@ -76,6 +102,7 @@ function Profile({ updateUser, onSignOut }) {
                 onBlur={emailValidation.onBlur}
                 onChange={emailValidation.onChange}
                 value={emailValidation.value}
+                disabled={editAcess}
               />
             </div>
             {validMinName() && (
@@ -98,13 +125,15 @@ function Profile({ updateUser, onSignOut }) {
             )}
           </div>
           <div className="profile__buttons-container">
-            <button
-              className="profile__button"
-              disabled={handleDisableButton()}
-              type="submit"
+            <Link
+              className={`profile__button ${
+                !editAcess && disableButton ? "profile__button_disabled" : ""
+              }`}
+              onClick={editAcess ? toggleEditAcess : handleSubmit}
+              disabled={handleDisableButton}
             >
-              Редактировать
-            </button>
+              {editAcess ? "Редактировать" : "Сохранить"}
+            </Link>
             <Link
               className="profile__button"
               to="/"

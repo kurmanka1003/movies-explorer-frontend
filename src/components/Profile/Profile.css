@@ -108,6 +108,11 @@
   color: #a0a0a0;
   cursor: default;
 }
+.profile__button_disabled {
+  pointer-events: none;
+  color: #a0a0a0;
+  cursor: default;
+}
 
 .profile__button:hover {
   opacity: 0.7;
